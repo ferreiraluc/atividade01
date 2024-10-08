@@ -1,37 +1,35 @@
-package com.example.atividade01.model;
+package com.example.atividade01.dto;
+
 import com.example.atividade01.model.Endereco;
-import jakarta.persistence.*;
-import java.util.List;
+import com.example.atividade01.model.Paciente;
 
-@Entity
-public class Paciente {
+public class PacienteDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String nome;
-
-    @Column(unique = true, nullable = false)
     private String cpf;
-
-    @Column(nullable = false)
     private String email;
-
-    @Column(nullable = false)
     private String telefone;
-
-
-    @ManyToOne
-    @JoinColumn(name = "endereco")
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "paciente")
-    private List<Consulta> consultas;
+    public PacienteDTO(Paciente paciente){
+        id = paciente.getId();
+        nome = paciente.getNome();
+        cpf = paciente.getCpf();
+        email = paciente.getEmail();
+        telefone = paciente.getTelefone();
+        endereco = paciente.getEndereco();
+    }
 
+    public PacienteDTO(Long id, String nome, String cpf, String email, String telefone, Endereco endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -80,8 +78,6 @@ public class Paciente {
         this.endereco = endereco;
     }
 
-
-
-
+    //Getters e Setters
 
 }
