@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/consultas")
+@RequestMapping("/api/consultas")
 public class ConsultaController {
 
     @Autowired
