@@ -3,19 +3,26 @@
 
 ## Introdução
 
-Este projeto tem como objetivo gerenciar agendamentos de consultas médicas, permitindo a criação, leitura, atualização e exclusão de consultas e pacientes.
+Esta aplicação tem como objetivo gerenciar agendamentos de consultas médicas, permitindo a criação, leitura, atualização e exclusão de consultas e pacientes. A aplicação também implementa autenticação por meio de tokens JWT (JSON Web Tokens), permitindo que apenas usuários autenticados acessem os endpoints protegidos. Além disso, conta com um sistema de auditoria que registra automaticamente as operações realizadas no sistema, como criação, atualização e exclusão de dados, armazenando essas informações em uma tabela de logs no banco de dados para fins de rastreamento e segurança.
 
-## Tecnologias Utilizadas
-
-* **Spring Boot:** Framework Java para desenvolvimento de aplicações web.
-* **Spring Data JPA:** Framework para acesso a dados.
-* **MySQL:** Banco de dados.
 
 ## Endpoints
+### 1. Login
 
-### 1. Cadastrar Endereço
+**POST** `/api/login`
 
-**POST** `/endereco`
+#### Request Body (JSON):
+```json
+{
+    "username": "admin",
+    "password": "123"
+}
+
+```
+
+### 2. Cadastrar Endereço
+
+**POST** `/api/endereco/cadastrar`
 
 #### Request Body (JSON):
 ```json
@@ -28,9 +35,9 @@ Este projeto tem como objetivo gerenciar agendamentos de consultas médicas, per
 }
 ```
 
-### 2. Cadastrar Paciente
+### 3. Cadastrar Paciente
 
-**POST** `/pacientes`
+**POST** `/api/pacientes/cadastrar`
 
 #### Request Body (JSON):
 ```json
@@ -45,9 +52,9 @@ Este projeto tem como objetivo gerenciar agendamentos de consultas médicas, per
 }
 ```
 
-### 3. Cadastrar Consulta
+### 4. Agendar Consulta
 
-**POST** `/consultas`
+**POST** `/api/consultas/agendar`
 
 #### Request Body (JSON):
 ```json
@@ -59,9 +66,9 @@ Este projeto tem como objetivo gerenciar agendamentos de consultas médicas, per
 }
 ```
 
-### 4. Listar Consultas por Período
+### 5. Listar Consultas por Período
 
-**GET** `/consultas/periodo`
+**GET** `/api/consultas/periodo?dataInicio=2024-01-01T00:00:00&dataFim=2024-10-31T23:59:59`
 
 #### Parâmetros:
 - `dataInicio`: Data e hora de início do período (formato ISO).
@@ -69,5 +76,5 @@ Este projeto tem como objetivo gerenciar agendamentos de consultas médicas, per
 
 #### Exemplo:
 ```
-/consultas/periodo?dataInicio=2023-12-01T00:00:00&dataFim=2024-12-12T23:59:59
+/api/consultas/periodo?dataInicio=2023-12-01T00:00:00&dataFim=2024-12-12T23:59:59
 ```
