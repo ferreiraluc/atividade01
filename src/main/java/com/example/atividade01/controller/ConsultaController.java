@@ -29,7 +29,7 @@ public class ConsultaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/agendar")
     public ResponseEntity<Consulta> agendarConsulta(@RequestBody Consulta consulta) {
         return ResponseEntity.ok(consultaService.agendarConsulta(consulta));
     }

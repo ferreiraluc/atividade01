@@ -27,7 +27,7 @@ public class PacienteController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public ResponseEntity<Paciente> salvarPaciente(@RequestBody Paciente paciente) {
         return ResponseEntity.ok(pacienteService.salvarPaciente(paciente));
     }

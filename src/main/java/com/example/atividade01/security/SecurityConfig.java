@@ -1,5 +1,7 @@
 package com.example.atividade01.security;
 
+import com.example.atividade01.auditing.ApplicationAuditAware;
+import org.springframework.data.domain.AuditorAware;
 import com.example.atividade01.repository.UserRepository;
 import com.example.atividade01.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,11 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuditorAware<Long> auditorAware(){
+        return new ApplicationAuditAware();
     }
 
     @Bean

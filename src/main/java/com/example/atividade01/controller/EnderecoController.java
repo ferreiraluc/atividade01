@@ -84,7 +84,7 @@ public class EnderecoController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public ResponseEntity<Void> cadastrarEndereco(@RequestBody Endereco endereco) {
         try {
             enderecoService.cadastrarEndereco(endereco.getEstado(), endereco.getCidade(), endereco.getRua(),
